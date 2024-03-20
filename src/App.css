@@ -1,38 +1,107 @@
+
+
 .App {
-  text-align: center;
-}
-
-.App-logo {
-  height: 40vmin;
-  pointer-events: none;
-}
-
-@media (prefers-reduced-motion: no-preference) {
-  .App-logo {
-    animation: App-logo-spin infinite 20s linear;
-  }
-}
-
-.App-header {
-  background-color: #282c34;
-  min-height: 100vh;
+  height: 100svh;
+  width: 100%;
   display: flex;
   flex-direction: column;
+}
+
+.editor-container {
+  width: 100%;
+  height: 100%;
+  display: flex;
+  position: relative;
+}
+
+.left-container, .right-container{
+  flex: 1;
+  max-width: 50vw;
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+}
+
+.left-container {
+  border-right: 2px solid black;
+}
+
+.left-container-header {
+  min-height: 50px;
+  width: 100%;
+  background-color: black;
+  color: white;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  
+}
+.left-container-header p {
+  font-size: 1.5rem;
+  text-decoration: underline;
+}
+.left-container-header p:hover {
+  cursor: pointer;
+  color: lightgreen
+}
+
+.right-container {
+  display: flex;
   align-items: center;
   justify-content: center;
-  font-size: calc(10px + 2vmin);
-  color: white;
 }
 
-.App-link {
-  color: #61dafb;
+.editor-character {
+  display:flex;
+  position: relative;
+  width: 70%;
+  border: 2px solid black;
+  padding-top: 100px;
+  background-color: rgba(255, 255, 255, 0.638);
+  border-top-right-radius: 50%;
+  border-top-left-radius: 50%;
 }
 
-@keyframes App-logo-spin {
-  from {
-    transform: rotate(0deg);
-  }
-  to {
-    transform: rotate(360deg);
-  }
+.editor-character-face {
+  width: 100%;
+}
+
+.editor-character-hair {
+  width: 100%;
+  position:absolute;
+}
+
+.items {
+  width: 100%;
+  flex-grow: 1;
+  display: grid;
+  overflow: auto; /* Enable scrolling if the content overflows */
+  grid-template-columns: repeat(auto-fill, 150px); 
+  grid-auto-rows: 25%;
+  justify-content: center;
+  gap: 20px;
+  padding: 20px;
+}
+
+.single-item {
+  display: flex;
+  position: relative;
+  width: 100%;
+  height: 100%;
+  flex: 1;
+}
+
+.editor-image {
+  width: 150px;
+  object-fit: cover;
+}
+
+.editor-hair-image {
+  position: absolute;
+}
+
+.single-item:hover {
+  scale: 1.1;
+  transform-origin: bottom;
+  cursor:pointer;
 }

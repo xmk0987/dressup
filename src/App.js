@@ -1,23 +1,40 @@
-import logo from './logo.svg';
-import './App.css';
+import { CharacterEditor } from "./components/CharacterEditor";
+import { useState } from "react";
+import "./App.css";
+
+const characters = require.context("./utils/images/Animal/characters", true);
+const characterList = characters.keys().map((image) => characters(image));
+
+const hairs = require.context("./utils/images/Animal/ahair", true);
+const hairsList = hairs.keys().map((image) => hairs(image));
 
 function App() {
+  const [char, setChar] = useState({
+    face: characterList[2],
+    hair: hairsList[5],
+  });
+
+  const changeCharacter = (type, item) => {
+    switch (type) {
+      case "face":
+        setChar({ ...char, face: item });
+        break;
+      case "hair":
+        setChar({ ...char, hair: item });
+        break;
+      default:
+        break;
+    }
+  };
+
   return (
     <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
+      <CharacterEditor
+        char={char}
+        characters={characterList}
+        hairs={hairsList}
+        changeChar={changeCharacter}
+      />
     </div>
   );
 }
